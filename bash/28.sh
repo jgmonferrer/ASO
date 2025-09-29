@@ -16,5 +16,6 @@ function escaneo_ips() {
 	nmap -v $network | grep 'Nmap scan report for' | cut -d " " -f 5,6,7
 	echo "Todas las IPs disponibles estan marcadas con [host down], el resto de IPs están activamente en uso"
 }
+echo "AVISO: Necesita los siguientes paquetes instalados para que funcione este script: net-tools, nmap, network-manager. Si no los tiene instalados, pulse Ctrl + C para salir del script e instalelos."
 informacion_red
 escaneo_ips
