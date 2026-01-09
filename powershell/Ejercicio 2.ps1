@@ -1,0 +1,11 @@
+﻿[int]$num1 = read-host "Escribe el número 1"
+[int]$num2 = read-host "Escribe el número 2"
+$suma = $num1 + $num2
+$resta = $num1 - $num2
+$multiplicacion = $num1 * $num2
+$division = $num1 / $num2
+$resto = $num1 % $num2
+write-host "$num1 + $num2 = $suma"
+write-host "$num1 - $num2 = $resta"
+write-host "$num1 * $num2 = $multiplicacion"
+write-host "$num1 / $num2 = $division (resto: $resto)"
