@@ -24,7 +24,7 @@ foreach ($linea in $usuarios){
     #Establecer el DN donde se creará el objeto de AD. La variable OU servirá para almacenar el nombre del departamento, ya que si se escribe directamente la variable $linea.departamento
     #dentro de $dn, que es una string creada con comillas da errores inesperados (se muestra la variable $linea, que es un diccionario y luego escribe '.departamento').
     $ou = $linea.departamento
-    $dn = "ou=$ou,ou=EMPRESA,$dc" #Opcionalmente se podría escribir todo en una variable de la siguiente forma: $dn = "ou$($linea.departamento),ou=EMPRESA,$dc"
+    $dn = "ou=$ou,ou=EMPRESA,$dc" #Opcionalmente se podría escribir todo en una variable de la siguiente forma: $dn = "ou=$($linea.departamento),ou=EMPRESA,$dc"
     #Establecer el usuario de inicio de sesión, se aprovechará también esta variable para definir el parámetro -UserPrincipalName
     $SamAccountName = ($linea.nombre+'.'+$linea.apellido).ToLower()
     #Contraseña por defecto para todos los usuarios
@@ -41,4 +41,5 @@ foreach ($linea in $usuarios){
         -accountpassword $password -GivenName $givenName -Surname $Surname -ChangePasswordAtLogon:$true -enabled:$true
     #Añadir el usuario al grupo del departamento
     Add-ADGroupMember -Identity $nombreGrupo -Members $SamAccountName
+
 }
