@@ -36,10 +36,11 @@ foreach ($linea in $usuarios){
     #Definir el nombre del grupo del departamento
     $departamento = $linea.departamento
     $nombreGrupo = "GG-$departamento"
-    #Crear el usuario con las variables definidas, se configuran los usuarios para que deban cambiar su contraseña ala iniciar sesión por primera vez y que estén habilitados.
+    #Crear el usuario con las variables definidas, se configuran los usuarios para que deban cambiar su contraseña al iniciar sesión por primera vez y que estén habilitados.
     New-ADUser -name $nombreVisual -Path $dn -SamAccountName $SamAccountName -UserPrincipalName "$SamAccountName@empresa.local" `
         -accountpassword $password -GivenName $givenName -Surname $Surname -ChangePasswordAtLogon:$true -enabled:$true
     #Añadir el usuario al grupo del departamento
     Add-ADGroupMember -Identity $nombreGrupo -Members $SamAccountName
 
 }
+
